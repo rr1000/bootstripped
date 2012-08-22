@@ -1,0 +1,322 @@
+<!-- 
++ bootstripped | a custom, lean version of twitters bootstrap css-js foundation
++ built by Ryan Rich @rsr9000 
++ all are free to modify and build on this as they see fit (2012)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>BootStripped</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- google font api "Source Sans Pro | Full weights 100-900" + to produce faster load time, delete a weight from the link if not in use -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- -->
+    <!-- bootstrap dependencies -->
+    <link href="pipeline/css/bootstrap.css" rel="stylesheet">
+    <link href="pipeline/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- -->
+    <!-- all styles here -->
+    <link href="pipeline/css/style.css" rel="stylesheet">
+    <!-- -->
+    <link href="pipeline/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- create your own favicon -->
+    <link rel="shortcut icon" href="pipeline/ico/fav.png">
+
+    <!-- XXXXXXXXXXXXXX -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script>
+    $(function() {
+    
+        function filterPath(string) {
+            return string
+            .replace(/^\//,'')
+            .replace(/(index|default).[a-zA-Z]{3,4}$/,'')
+            .replace(/\/$/,'');
+        }
+    
+        var locationPath = filterPath(location.pathname);
+        var scrollElem = scrollableElement('html', 'body');
+    
+        // Any links with hash tags in them (can't do ^= because of fully qualified URL potential)
+        $('a[href*=#]').each(function() {
+    
+            // Ensure it's a same-page link
+            var thisPath = filterPath(this.pathname) || locationPath;
+            if (  locationPath == thisPath
+                && (location.hostname == this.hostname || !this.hostname)
+                && this.hash.replace(/#/,'') ) {
+    
+                    // Ensure target exists
+                    var $target = $(this.hash), target = this.hash;
+                    if (target) {
+    
+                        // Find location of target
+                        var targetOffset = $target.offset().top;
+                        $(this).click(function(event) {
+    
+                            // Prevent jump-down
+                            event.preventDefault();
+    
+                            // Animate to target
+                            $(scrollElem).animate({scrollTop: targetOffset}, 2000, function() {
+    
+                                // Set hash in URL after animation successful
+                                location.hash = target;
+    
+                            });
+                        });
+                    }
+            }
+    
+        });
+    
+        // Use the first element that is "scrollable"  (cross-browser fix?)
+        function scrollableElement(els) {
+            for (var i = 0, argLength = arguments.length; i <argLength; i++) {
+                var el = arguments[i],
+                $scrollElement = $(el);
+                if ($scrollElement.scrollTop()> 0) {
+                    return el;
+                } else {
+                    $scrollElement.scrollTop(1);
+                    var isScrollable = $scrollElement.scrollTop()> 0;
+                    $scrollElement.scrollTop(0);
+                    if (isScrollable) {
+                        return el;
+                    }
+                }
+            }
+            return [];
+        }
+    
+    });
+    </script>
+
+    <!-- XXXXXXXXXXXXXX -->
+</head>
+<body data-spy="scroll" data-target=".subnav" data-offset="50">
+    <!-- top nav -->
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <p class="name">Bootstripped</p>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="./index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="#css">Basic CSS</a>
+                        </li>
+                        <li>
+                            <a href="#mix">Bootstrap Mix</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end top nav -->
+    <!-- container -->
+    <div class="container">
+        <hr>
+        <!-- -->
+        <p class="massive">
+            Welcome To BootStripped
+            <p class="red center">"a minimalist version of twitters 2.0 bootstrap foundation"</p>
+        </p>
+        <div class="row top25">
+            <div class="span6 thinestLineT">
+                <p>
+                    The basis of BootStripped is creating a css foundation, much like Bootstrap, but without most of the obvious styling that comes with bootstrap. BootStripped gives architecture rather than experience in terms of site layout.
+                </p>
+            </div>
+            <div class="span6 thinestLineT">
+                <p>
+                    You'll notice that BootStripped utilizes multiple css classes within single elements. By using object oriented styling. This allows one to apply styles fast, effective, and carefree. Many classes are prebuilt and can be added to any elements in the HTML.
+                </p>
+            </div>
+        </div>
+        <div class="thinestLineT"></div>
+        <p class="centerAuto">
+            <a href="Bootstripped 1.0.zip" class="button-blue">Download BootStripped 1.0</a>
+            <a class="button-green" onClick='window.location="view-source:" + window.location.href'>
+                View Source
+                <span class="tinyT">(Chrome | Firefox only)</span>
+            </a>
+        </p>
+        <div class="thinLine"></div>
+        <div class="row top20">
+            <div class="span4">
+                <h1>This is a large header</h1>
+                <h2>This is a large header</h2>
+                <h3>This is a large header</h3>
+                <h4>This is a large header</h4>
+                <h5>This is a large header</h5>
+                <h6>This is a large header</h6>
+            </div>
+            <div class="span4">
+                <p>This is a standard paragraph</p>
+                <p class="italic">This is a paragraph in italic</p>
+                <p class="italic bold">This is a paragraph in bold italic</p>
+                <p class="caps">This is a paragraph in all caps</p>
+                <p class="largerT">This is a paragraph in large text</p>
+                <p class="smallerT">This is a paragraph in small text</p>
+            </div>
+            <div class="span4">
+                <p class="blue">This is some colored text using classes | abcdefghijklm</p>
+                <p class="red">This is some colored text using classes | abcdefghijklm</p>
+                <p class="green">This is some colored text using classes | abcdefghijklm</p>
+                <p class="yellow">This is some colored text using classes | abcdefghijklm</p>
+                <p class="orange">This is some colored text using classes | abcdefghijklm</p>
+                <p class="dark">This is some colored text using classes | abcdefghijklm</p>
+            </div>
+        </div>
+        <div class="thickestLine"></div>
+        <div class="thickerLine"></div>
+        <div class="thickLine"></div>
+        <div class="thinLine"></div>
+        <div class="thinestLine"></div>
+        <p class="anounce" id="css">Larger Text Perhaps For A Title Or Anouncement</p>
+        <div class="thinestLineT"></div>
+        <div class="row top10">
+            <div class="span2">
+                <a href="#" class="button">Button Example</a>
+            </div>
+            <div class="span2">
+                <a href="#" class="button-red">Button Example</a>
+            </div>
+            <div class="span2">
+                <a href="#" class="button-blue">Button Example</a>
+            </div>
+            <div class="span2">
+                <a href="#" class="button-green">Button Example</a>
+            </div>
+            <div class="span2">
+                <a href="#" class="button-yellow">Button Example</a>
+            </div>
+            <div class="span2">
+                <a href="#" class="button-dark">Button Example</a>
+            </div>
+        </div>
+        <pre class="top20">&lt;a href="#" class="button"&gt;Button Example&lt;/a&gt;</pre>
+        <p>or</p>
+        <pre>&lt;a href="#" class="button-red"&gt;Button Example&lt;/a&gt;</pre>
+        <p>and so on for each color</p>
+        <p class="title top30">An example of how to use multiple css classes</p>
+        <pre>&lt;h2 class="top10 green"&gt;This is a green heading 10 pixels from the top&lt;/h2&gt;</pre>
+        <p class="blue">And the result</p>
+        <h2 class="top10 green">This is a green heading 10 pixels from the top</h2>
+        <!-- -->
+        <p class="title top30">Another example</p>
+        <pre>&lt;p class="thickLineT blue"&gt;This is a blue paragraph with a thick line on top&lt;/p&gt;</pre>
+        <p class="blue">And the result</p>
+        <p class="thickLineT blue">This is a blue paragraph with a thick line on top</p>
+        <p class="title top30">
+            You can also use BootStripped classes with existing Bootstrap classes and grids
+        </p>
+        <div class="row">
+            <div class="span3 thickestLineT thinLine" id="mix">
+                <p class="smallerT yellow">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget ultricies odio. Vivamus adipiscing vulputate gravida. Morbi bibendum ante a mi suscipit ut auctor diam molestie. Nam quis massa lectus, in pulvinar mauris. Sed a nibh vitae neque mattis aliquet vel nec erat. Quisque non magna ipsum, sed condimentum tortor. Cras varius dui ut sem consequat aliquet porttitor erat tincidunt.
+                </p>
+            </div>
+            <div class="span3 thickerLineT thinLine">
+                <p class="smallerT red">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget ultricies odio. Vivamus adipiscing vulputate gravida. Morbi bibendum ante a mi suscipit ut auctor diam molestie. Nam quis massa lectus, in pulvinar mauris. Sed a nibh vitae neque mattis aliquet vel nec erat. Quisque non magna ipsum, sed condimentum tortor. Cras varius dui ut sem consequat aliquet porttitor erat tincidunt.
+                </p>
+            </div>
+            <div class="span3 thickLineT thinLine">
+                <p class="smallerT green">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget ultricies odio. Vivamus adipiscing vulputate gravida. Morbi bibendum ante a mi suscipit ut auctor diam molestie. Nam quis massa lectus, in pulvinar mauris. Sed a nibh vitae neque mattis aliquet vel nec erat. Quisque non magna ipsum, sed condimentum tortor. Cras varius dui ut sem consequat aliquet porttitor erat tincidunt.
+                </p>
+            </div>
+            <div class="span3 thinLineT thinLine">
+                <p class="smallerT blue">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget ultricies odio. Vivamus adipiscing vulputate gravida. Morbi bibendum ante a mi suscipit ut auctor diam molestie. Nam quis massa lectus, in pulvinar mauris. Sed a nibh vitae neque mattis aliquet vel nec erat. Quisque non magna ipsum, sed condimentum tortor. Cras varius dui ut sem consequat aliquet porttitor erat tincidunt.
+                </p>
+            </div>
+        </div>
+        <ul class="nav nav-tabs thinestLineT top30">
+            <li class="active">
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="" class="blue smallerT">Another Link</a>
+            </li>
+            <li>
+                <a href="" class="yellow italic">Even More Links</a>
+            </li>
+        </ul>
+        <pre>  &lt;ul class="nav nav-tabs thinestLineT top30"&gt;
+    &lt;li&gt; Link One &lt;/li&gt;
+    &lt;li&gt; Link Two &lt;/li&gt;
+    &lt;li&gt; Link Three &lt;/li&gt;
+  &lt;ul&gt;</pre>
+        <!-- -->
+        <!-- footer goes here -->
+        <div class="footer thinestLineT top30">
+            <a href="#" class="pull-right green smallerT">Top Of Page</a>
+            <br />
+                <img src="pipeline/img/git.png" class="pull-right">
+            <p class="smallerT pullUp20">
+                Please direct all questions and issues
+                <a href="" class="blue">rrichrs@gmail.com</a>
+            </p>
+            <p class="smallerT">
+                You can follow me on twitter
+                <a href="http://twitter.com/rsr9000" class="blue">here</a>
+            </p>
+            <p class="smallerT">
+                Download Bootstrap
+                <a href="http://twitter.github.com/bootstrap/" class="blue">here</a>
+            </p>
+        </div>
+        <!-- --> </div>
+    <!-- end container -->
+    <!-- uncomment as needed -->
+    <!-- <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+-->
+<!-- <script src="pipeline/js/jquery.js"></script>
+-->
+<!-- <script src="pipeline/js/google-code-prettify/prettify.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-transition.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-alert.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-modal.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-dropdown.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-scrollspy.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-tab.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-tooltip.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-popover.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-button.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-collapse.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-carousel.js"></script>
+-->
+<!-- <script src="pipeline/js/bootstrap-typeahead.js"></script>
+-->
+<!-- <script src="pipeline/js/application.js"></script>
+-->
+</body>
+</html>
