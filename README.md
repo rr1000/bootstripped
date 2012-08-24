@@ -1,5 +1,8 @@
 ** Bootstripped **
 
+Check twitter for updates and 2.1 release (October 2012)
+@RSR9000
+
 Bootstripped is a CSS-Javascript-HTML framework that was built using Twitters Bootstrap.
 
 -Bootstripped utilizes multiple CSS classes within single HTML elements as a way to build "on-top" of Twitters existing Bootstrap foundation. 
